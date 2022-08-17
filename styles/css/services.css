@@ -1,0 +1,133 @@
+.service_icon {
+   width: 90px;
+   height: 90px;
+   display: grid;
+   align-items: center;
+   justify-content: center;
+   color: #fff;
+   font-size: 20px;
+   box-shadow: 0px 100px 80px rgba(150, 114, 255, 0.07), 0px 64.8148px 46.8519px rgba(150, 114, 255, 0.0531481), 0px 38.5185px 25.4815px rgba(150, 114, 255, 0.0425185), 0px 20px 13px rgba(150, 114, 255, 0.035), 0px 8.14815px 6.51852px rgba(150, 114, 255, 0.0274815), 0px 1.85185px 3.14815px rgba(150, 114, 255, 0.0168519);
+   border-radius: 20px;
+   background-color: #FD4D71;
+
+}
+
+.service_card_para {
+   color: #333333;
+}
+
+
+/* -------------------------little_about_section ---------------------------- */
+
+
+.little_header {
+   width: 50%;
+
+}
+
+@media screen and (max-width:991px) {
+   .little_header {
+      width: 90%;
+      font-size: 36px;
+   }
+
+
+}
+
+.little_about_icon {
+   width: 160px;
+   height: 160px;
+   align-items: center;
+   /* border-radius: 50px !important; */
+}
+
+.little_about_div:hover {
+   background: #FFFFFF;
+   box-shadow: 0px 12px 64px rgba(0, 0, 0, 0.08);
+   /* border-radius: 20px 20px 0px 0px; */
+   border-radius: 20px;
+   border: "1px solid #FFFFFF";
+   border-bottom: 3px solid #0098DA;
+}
+
+.little_about_div {
+   border-bottom: 3px solid transparent;
+}
+
+.about_what {
+   background: rgba(6, 161, 228, 0.6);
+   max-width: 211px;
+   height: 25px;
+   border-radius: 5px;
+   position: relative;
+   top: -29px;
+   z-index: -34;
+}
+
+@media screen and (max-width:575px) {
+   .about_what {
+      max-width: 145px;
+      height: 17px;
+      top: -22px;
+   }
+
+}
+
+.about-card-heading {
+   color: #3E3E3E;
+}
+
+.about-card-para {
+   color: #626262;
+}
+
+/* -----------------------------------------happy_custmer_div----------------------------------------- */
+
+.happy_custmer_div {
+   width: 231px;
+   height: 216px;
+   display: grid;
+   align-items: center;
+   justify-content: center;
+   background: #FFFFFF;
+   border: 2px solid rgba(156, 151, 151, 0.3);
+   box-shadow: 60px 60px 70px rgba(0, 0, 0, 0.05);
+   border-radius: 20px;
+}
+
+.happy_tittle {
+   font-weight: 600;
+   font-size: 52px;
+   line-height: 78px;
+   align-items: center;
+   text-align: center;
+}
+
+.happy_subTittle {
+   font-weight: 700;
+   font-size: 24px;
+   line-height: 130%;
+   color: rgba(72, 72, 72, 0.6);
+
+}
+
+@media screen and (max-width:767px) {
+   .happy_custmer_div {
+      width: 166px;
+      height: 155px;
+
+   }
+
+   .happy_tittle {
+
+      font-size: 37px;
+
+   }
+
+   .happy_subTittle {
+
+      font-size: 16px;
+
+
+   }
+}

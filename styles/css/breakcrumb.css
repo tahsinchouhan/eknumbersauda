@@ -1,0 +1,35 @@
+nav>ol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    height: 50px;
+    background-color:rgb(41, 41, 41);
+}
+li a{
+    color: rgb(155, 151, 151);
+    font-family: 700;
+}
+nav li {
+    margin-right: 8px;
+}
+
+nav li:after {
+    content: ">";
+    display: inline-block;
+    margin-left: 4px;
+    color:rgb(155, 151, 151);
+    font-family: 700;
+}
+
+a{
+    text-decoration: none !important;
+    color: #666 ;
+}
+
+.breadcrumb-div nav ol{
+    font-size:10px;
+  }
+.brActive>* {
+    color: red;
+}

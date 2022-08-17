@@ -1,0 +1,167 @@
+.searchBox-main-div {
+  /* width: 90%; */
+  background: #ffffff;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 0px 10px 10px 10px;
+  font-family: "Nunito Sans";
+}
+
+/* -------------------------Enter Pincode Or Location------------------- */
+
+.searchBox-input {
+  height: 100% !important;
+  width: 100% !important;
+  border: none !important;
+  background: #f8f8f8 !important;
+  color: #484848 !important;
+  font-weight: 600 !important;
+}
+
+.searchBox-main-div .form-control {
+  height: 100% !important;
+  width: 100% !important;
+  border: none !important;
+  background: #f8f8f8 !important;
+  color: #484848 !important;
+  font-weight: 600 !important;
+}
+.searchBox-main-div .form-control:focus {
+  border: none !important;
+  outline: none !important;
+}
+.searchBox-main-div .form-control::placeholder {
+  color: #aeaeae !important;
+  font-weight: normal !important;
+}
+.searchBox-input:focus {
+  border: none;
+  outline: none;
+}
+
+.searchBox-input::placeholder {
+  color: #aeaeae;
+  font-weight: normal;
+}
+
+.box-child-div {
+  background: #f8f8f8;
+  border-radius: 4px;
+}
+
+.box-child-div .search-icon {
+  font-size: 21px;
+  color: #484848;
+}
+
+/* ------------------------------property type------------------- */
+.slider_box{
+  padding-top:0.1rem !important;
+    padding-bottom:0.1rem !important;
+}
+
+.home-icon {
+  font-size: 21px;
+  color: #484848;
+}
+
+.arrow-icon {
+  font-size: 21px;
+  color: #484848;
+}
+
+.property-type-text {
+  color: #aeaeae;
+  white-space: nowrap;
+}
+
+.property-type-main {
+  position: relative;
+}
+
+.cus-dropdown {
+  position: absolute;
+  background-color: #ffff;
+  top: 150%;
+  width: 100%;
+  padding: 100px;
+}
+
+.property-type-col {
+  cursor: pointer;
+}
+
+.agent-dropdown-filter {
+  height: 250px;
+  width: 100%;
+  overflow-y: auto;
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid #ececec;
+  padding-left: 12px;
+  padding-top: 20px;
+  top:calc(100%);
+  position: absolute;
+  z-index: 100;
+  border-radius: 4px;
+  box-shadow: 2px 4px 6px 2px rgb(0 0 0 / 10%), 0 12px 11px 2px rgb(0 0 0 / 10%);
+}
+.search-dropdown-parent {
+  padding: 9px 0px;
+}
+.table-item {
+  font-size: 20px;
+  margin-left: 8px;
+}
+/* ------------------tabs----------------- */
+
+.tabs-div {
+  width: 15%;
+
+  background: #fff;
+  border-radius: 10px;
+}
+
+.searchBox-div {
+  width: 90%;
+  margin: auto;
+}
+
+.searchBox-div .nav {
+  flex-wrap: nowrap !important;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 10px 10px 0px 0px;
+}
+
+.searchBox-div .nav button {
+  font-size: 12px !important;
+}
+
+.search-btn-padding{
+  margin-top:0px;
+}
+
+@media screen and (max-width: 991px) {
+  .tabs-div {
+    width: 35%;
+  }
+
+
+}
+
+@media screen and (max-width: 400px) {
+  .tabs-div {
+    width: 45% !important;
+  }
+    .search-btn-padding{
+  margin-top:24px !important;
+}
+}
+
+.searchBox-div .nav .nav-link.active {
+  background-color: #fff !important;
+  /* border-radius: 10px 10px 0px 0px !important; */
+}
+
+.searchBox-div .nav-tabs .nav-link {
+  border-radius: 10px 10px 0 0 !important;
+}

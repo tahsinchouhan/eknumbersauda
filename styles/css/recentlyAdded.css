@@ -1,0 +1,32 @@
+.main-div {
+    background: #FBFBFB;
+    border: 2px solid #EBEBEB;
+    border-radius: 102.857px 0px 0px 102.857px;
+}
+
+.recently-text {
+    font-size: 36px;
+    color: #484848;
+}
+
+.latest-text {
+    color: #0098DA;
+    font-size: 15px;
+}
+
+.text-more {
+    font-size: 20px;
+    font-weight: 600;
+    color: #0098DA;
+    cursor: pointer;
+
+}
+
+@media screen and (max-width:575px) {
+    .text-more {
+        font-size: 16px;
+
+
+
+    }
+}

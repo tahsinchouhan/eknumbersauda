@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap'); */
+
+@import "../styles/css/header.css";
+@import "../styles/css/detailcard.css";
+@import "../styles/css/contact.css";
+@import "../styles/css/recent.css";
+@import "../styles/css/benner.css";
+@import "../styles/css/footer.css";
+@import "../styles/css/services.css";
+
+@import "../styles/css/CardComponet.css";
+@import "../styles/css/recentlyAdded.css";
+@import "../styles/css/rating.css";
+@import "../styles/css/bestRealEstale.css";
+@import "../styles/css/rent.css";
+@import "../styles/css/viewProperty.css";
+@import "../styles/css/admin.css";
+@import "../styles/css/breakcrumb.css";
+@import "../styles/css/searchBox.css";
+@import "../styles/css/multiRangeSlider.css";
+@import "../styles/css/dashboardData.css";
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito Sans' !important;
+
+}
+
+body {
+  padding: 0;
+  margin: 0;
+
+}
+
+
+/* a {
+  color:  !important;
+  text-decoration: none !important;
+} */
+
+.login_div {
+  height: 457px;
+  margin: 0 auto;
+  padding: 50px 78px;
+  box-shadow: 10px 10px 15px 10px lightblue;
+  border-radius: 10px;
+}
+
+.admin_form {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+}
+
+.form-card {
+  flex: 1 1 auto;
+  padding: 2rem 3rem !important;
+}
+
+.card-header {
+  padding: 1rem 2.9rem !important;
+}
+
+.btn-view-details {
+  border-radius: 2.25rem !important;
+}
+
+.view_card>:hover.btn-view-details {
+  bottom: 16px;
+}
+
+/*-------------------- buttonComponent----------------------------- */
+.view_all_property {
+  background: #0098DA !important;
+}
+
+.cancel_btn_property {
+  background-color: rgb(185, 35, 35) !important;
+  border-color: rgb(185, 35, 35) !important;
+  box-shadow: none !important;
+
+}
+
+.subHeader_item {
+  color: #AEAEAE;
+  font-size: 16px;
+}
+
+/* s */
+
+/*-------------------------- monika's css--------------------------------- */
+
+@media screen and (min-width:991px) and (max-width: 1396px) {
+  /* .benner_card {
+    top: -90.5px !important;
+} */
+
+}
+
+@media screen and (max-width: 991px) {
+  /* .project_detail_btn{
+  order: 4;
+} */
+
+  .real_view_more {
+    bottom: -10px;
+  }
+
+  .view_more_btn {
+    float: revert;
+  }
+
+  .best_real_nav .nav-tabs {
+    width: 100% !important;
+  }
+
+
+
+  .active-link-div {
+    margin: 10px 0px;
+  }
+
+  .about_little_section {
+    height: auto;
+  }
+
+  .benner_card {
+    width: 90%;
+    top: 10px !important;
+  }
+
+  .search_box {
+    margin-bottom: -6px !important;
+  }
+
+
+}
+
+@media screen and (max-width:600px) {
+
+  .benner_card {
+    top: 12px !important;
+  }
+
+  .dropdown-menu {
+    max-width: 260px !important;
+
+  }
+
+  .best_real_nav .nav-tabs button {
+    font-size: 14px !important;
+  }
+
+  .best_real_nav,
+  .nav-link {
+    margin: 0px !important;
+
+  }
+
+  .best_real_nav .nav-tabs {
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    max-width: 260px !important;
+
+  }
+}
+
+.homePage-all-headings {
+  font-size: 36px !important;
+  font-weight: bold;
+  line-height: 46px !important;
+}
+
+@media screen and (max-width:576px) {
+  .homePage-all-headings {
+    font-size: 25px !important;
+  }
+}
+
+
+.service_menu span {
+  font-size: 17px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.clickCursor:hover {
+  cursor: pointer;
+}
+
+.house-type-text {
+  margin-top: 2px !important;
+  color: #212529 !important;
+}
+
+.searchBox-div .nav-tabs .nav-link {
+  border-radius: 10px 10px 0 0 !important;
+}
+
+@media screen and (max-width:400px) {
+
+  .tabs-div {
+    width: 45% !important;
+
+
+  }
+}
+
+.read-or-hide {
+  color: rgb(125, 193, 248);
+  cursor: pointer;
+}
+
+
+.main-owner{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.owner-about {
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 36px !important;
+  line-height: 130% !important;
+  text-align: center !important;
+  text-transform: capitalize !important;
+  color: #000000 !important;
+  margin-bottom: 50px !important;
+}
+
+.owner-about-p {
+  font-style: normal !important;
+  font-weight: 300 !important;
+  font-size: 16px !important;
+  line-height: 26px !important;
+  text-align: center !important;
+  text-transform: capitalize !important;
+  color: #000000 !important;
+}
+.owner-row{
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 425px) {
+  .owner-row{
+    display: block !important;
+    padding: 0 !important;
+  }
+  .main-owner{
+    padding: 5px !important;
+  }
+}
+
+@media only screen and (min-width: 425px) and (max-width: 768px) {
+  .owner-row{
+    display: block !important;
+    padding: 0 !important;
+  }
+}

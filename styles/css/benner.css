@@ -1,0 +1,238 @@
+.grad {
+  height: 450px;
+  /* background-color: #0098DA; 
+    background-image: linear-gradient(to right, #0098DA , #ccdee5); */
+  background: linear-gradient(113.1deg,
+      rgba(0, 152, 218, 0.3) 24.69%,
+      rgba(0, 152, 218, 0.165) 86.72%);
+  border-radius: 20px;
+}
+
+.benner_image {
+  width: 100% !important;
+}
+
+.benner_image>span>,
+.benner_image>span>span>,
+.benner_image>span>span>img {
+  width: 100% !important;
+  border-radius: 20px !important;
+  /* height: 497px !important; */
+}
+
+.paridhi_title {
+  color: #0098da;
+  font-size: 56px;
+  font-weight: 700;
+  text-shadow: 0px 30px 50px rgba(0, 0, 0, 0.1);
+}
+
+.paridhi_subtitle {
+  /* color: #FFFFFF; */
+  font-size: 56px;
+  font-weight: 700;
+  /* white-space: nowrap; */
+}
+
+.benner-input {
+  background: #f8f8f8;
+  border-radius: 10px;
+}
+
+.input-box2 {
+  background: #f8f8f8 !important;
+  border: none !important;
+  padding: 10px 10px !important;
+  box-shadow: none !important;
+  border-radius: 4px !important;
+}
+
+.input-box2:focus {
+  background: #f8f8f8 !important;
+  border: none !important;
+
+}
+
+.input-box2::placeholder {
+  color: #AEAEAE !important;
+
+}
+
+/* .benner-search {
+  margin-top: 0.9rem;
+  font-size: medium;
+} */
+
+/* ---------------------------------------dropdown-menu------------------------------- */
+.dropdown-menu {
+  /* width: 537px !important; */
+  /* height: 176px !important; */
+  overflow-y: auto;
+}
+
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background: rgba(0, 152, 218, 0.4) !important;
+}
+
+.dropdown-item {
+  width: 100% !important;
+  margin: auto;
+  height: 40px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #aeaeae;
+  font-size: 20px;
+  border-radius: 20px;
+  border: 1 px solid #636060 !important;
+}
+
+.dropdown-item:hover {
+  background-color: transparent;
+}
+
+.home_type_item {
+  width: 100% !important;
+  border: 1 px solid #636060;
+}
+
+.dropdown_type_item {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 170%;
+  color: #626262 !important;
+}
+
+.home_type_title {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.dropdown-header {
+  color: #3e3e3e !important;
+  font-weight: 600;
+}
+
+.benner_card {
+  width: 90%;
+  top: -102px;
+  box-shadow: 0px 8px 40px rgb(0 0 0 / 8%);
+}
+
+/* .price_item{
+  max-width: 282px !important;
+} */
+/* ---------------------services_box------------------- */
+.services_box {
+  background: #ffffff;
+  box-shadow: 0px 9.024px 45.12px rgba(0, 0, 0, 0.08);
+  border-radius: 0px 0px 11.28px 11.28px;
+  width: 227px;
+  height: 193px;
+}
+
+/* Custom Dropdown */
+
+.custome-banner-dropdown {
+  height: 56px;
+  padding-top: 15px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #212529 !important;
+}
+
+.custom-dropdown {
+  width: 537px;
+  background: #ffffff;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 0px 0px 10px 10px;
+  position: absolute;
+  top: 100px;
+  z-index: 99999;
+}
+
+.custom-propert-section {
+  padding: 5px 15px;
+  border: 1px solid #e3e3e3;
+  border-radius: 20px;
+  text-transform: capitalize;
+  margin-right: 15px;
+  cursor: pointer;
+  color: #AEAEAE;
+}
+
+
+.custom-propert-section::after {
+  background: rgba(0, 152, 218, 0.4);
+}
+
+.search-bar-buttojn {
+  padding: 14px !important;
+  ;
+}
+
+.search-last-drop a::after {
+  content: "";
+  border: none;
+}
+
+.search-last-drop .dropdown-menu {
+  width: 12rem;
+  height: 21rem;
+  overflow-y: auto;
+}
+
+.drop-icon {
+  color: #AEAEAE;
+
+}
+
+.search_box {
+  margin-bottom: -86px;
+  color: #AEAEAE !important;
+}
+
+/* ---------------------------sanju' css for search box.................... */
+
+.search-bar {
+  bottom: 2%;
+  position: unset;
+  width: 96%;
+
+}
+
+.banner-container {
+  position: unset;
+}
+.whatsapp_btn{
+  /* position:fixed;
+  top:400px;
+  z-index: 100;
+  bottom:10%;
+  right: 0; */
+  position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+@media screen and (min-width:991px) {
+  .search-bar {
+    bottom:-8%;
+    position: absolute;
+  }
+  .banner-container {
+    position: relative;
+  }
+}

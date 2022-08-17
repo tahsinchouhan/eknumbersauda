@@ -1,0 +1,138 @@
+:root {
+    --font-first-color: #484848;
+    --font-second-color: #3E3E3E;
+    --icon-color: #0098DA;
+}
+
+.card-main-div {
+    border: 1.02857px solid #E4E4E4;
+    box-shadow: 0px 20px 40px -6.17143px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 12px 10px;
+}
+
+.card-img-div {
+    border-radius: 20px;
+}
+
+.building-name {
+    font-size: 20px;
+    color: var(--font-first-color);
+}
+
+.card-main-div p {
+    margin: 0;
+}
+
+.location-name {
+    color: var(--font-first-color);
+}
+
+.location-icon {
+    color: var(--font-first-color);
+    font-size: 15px;
+}
+
+.bed-icon,
+.sqft-icon,
+.bath-icon {
+    font-size: 27px;
+    color: var(--icon-color);
+}
+
+.sqft-icon {
+    font-size: 25px;
+    border: 2px solid var(--icon-color);
+    border-style: dashed;
+    padding: 3px;
+}
+
+.text-bed-bath-sqft {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--font-second-color);
+    align-self: center;
+    white-space: normal;
+}
+
+.text-price {
+    font-size: 20px;
+    color: var(--font-first-color);
+}
+
+.text-real-price {
+    color: var(--font-first-color);
+}
+
+.card-img {
+    width: auto;
+    height: auto;
+}
+
+.sell-rent-div {
+    color: #ffff;
+    top: 0;
+    background: rgba(0, 152, 218, 0.4);
+    border-radius: 5.14286px;
+}
+
+/* 
+@media screen and (max-width:400px) {
+
+    .building-name {
+        font-size: 15px;
+        font-weight: 600;
+
+    }
+
+    .location-name {
+        font-size: 12.4651px;
+    }
+
+
+
+
+} */
+@media screen and (max-width:500px) {
+
+    .building-name {
+        font-size: 15px;
+        font-weight: 600;
+
+    }
+
+    .location-name {
+        font-size: 14px;
+    }
+
+    .bed-icon,
+    .sqft-icon,
+    .bath-icon {
+        font-size: 20px;
+        color: var(--icon-color);
+    }
+
+    .sqft-icon {
+        font-size: 20px !important;
+
+    }
+
+    .text-bed-bath-sqft {
+        font-size: 11px;
+
+
+    }
+
+    .text-price {
+        font-size: 17px;
+
+    }
+
+    .text-real-price {
+        font-size: 15px;
+
+    }
+
+
+
+}

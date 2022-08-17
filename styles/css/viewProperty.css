@@ -1,0 +1,134 @@
+.view-property .villa-name {
+    color: #3E3E3E;
+    font-size: 36px !important;
+}
+
+.view-property .location-icon {
+    color: #626262;
+    font-size: 25px;
+}
+
+.view-property .location-text {
+    color: #626262;
+
+}
+
+.view-property .price-and-fourMore {
+    color: #3E3E3E;
+    font-size: 24px;
+
+}
+
+.view-property-icons {
+    color: #0098DA;
+    font-size: 27px;
+    align-self: center;
+}
+
+.view-property-icons-text {
+    color: #3E3E3E;
+    font-weight: 700;
+
+}
+
+.view-property .number-div {
+    width: 50px;
+    height: 50px;
+    background-color: #C0DFF8;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #0098DA;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.why-choose-content-text {
+    color: #3E3E3E;
+
+}
+
+.map-div {
+    border-radius: 10px;
+}
+
+@media screen and (max-width:991px) {
+    .map-div {
+        height: 400px !important;
+    }
+}
+
+.iframe-div {
+    border-radius: 10px;
+}
+
+@media screen and (max-width:767px) {
+    .view-property .villa-name {
+
+        font-size: 23px !important;
+    }
+
+    .view-property .location-icon {
+
+        font-size: 20px;
+    }
+
+    .view-property .location-text {
+        font-size: 13px;
+
+    }
+
+    .view-property .price-and-fourMore {
+        color: #3E3E3E;
+        font-size: 20px;
+
+    }
+
+    .view-property .number-div {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+
+    }
+
+    .view-property-icons {
+
+        font-size: 25px;
+
+    }
+
+    .view-property-icons-text {
+        font-size: 15px;
+        align-self: center;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .view-property .carousel-item span {
+        height: 300px !important;
+    }
+
+
+}
+
+@media screen and (max-width:375px) {
+    .view-property .carousel-item span {
+        height: 200px !important;
+    }
+
+
+}
+
+.view-property .carousel-indicators {
+    display: none !important;
+}
+
+.view-property-description {
+    text-align: justify !important;
+}
+
+
+.view-property .carousel-inner {
+    border-radius: 10px;
+}
