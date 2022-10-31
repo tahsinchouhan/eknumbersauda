@@ -2,9 +2,11 @@
   height: 450px;
   /* background-color: #0098DA; 
     background-image: linear-gradient(to right, #0098DA , #ccdee5); */
-  background: linear-gradient(113.1deg,
-      rgba(0, 152, 218, 0.3) 24.69%,
-      rgba(0, 152, 218, 0.165) 86.72%);
+  background: linear-gradient(
+    113.1deg,
+    rgba(0, 152, 218, 0.3) 24.69%,
+    rgba(0, 152, 218, 0.165) 86.72%
+  );
   border-radius: 20px;
 }
 
@@ -12,9 +14,9 @@
   width: 100% !important;
 }
 
-.benner_image>span>,
-.benner_image>span>span>,
-.benner_image>span>span>img {
+.benner_image > span >,
+.benner_image > span > span >,
+.benner_image > span > span > img {
   width: 100% !important;
   border-radius: 20px !important;
   /* height: 497px !important; */
@@ -50,12 +52,10 @@
 .input-box2:focus {
   background: #f8f8f8 !important;
   border: none !important;
-
 }
 
 .input-box2::placeholder {
-  color: #AEAEAE !important;
-
+  color: #aeaeae !important;
 }
 
 /* .benner-search {
@@ -162,9 +162,8 @@
   text-transform: capitalize;
   margin-right: 15px;
   cursor: pointer;
-  color: #AEAEAE;
+  color: #aeaeae;
 }
-
 
 .custom-propert-section::after {
   background: rgba(0, 152, 218, 0.4);
@@ -172,7 +171,6 @@
 
 .search-bar-buttojn {
   padding: 14px !important;
-  ;
 }
 
 .search-last-drop a::after {
@@ -187,13 +185,12 @@
 }
 
 .drop-icon {
-  color: #AEAEAE;
-
+  color: #aeaeae;
 }
 
 .search_box {
   margin-bottom: -86px;
-  color: #AEAEAE !important;
+  color: #aeaeae !important;
 }
 
 /* ---------------------------sanju' css for search box.................... */
@@ -202,35 +199,34 @@
   bottom: 2%;
   position: unset;
   width: 96%;
-
 }
 
 .banner-container {
   position: unset;
 }
-.whatsapp_btn{
+.whatsapp_btn {
   /* position:fixed;
   top:400px;
   z-index: 100;
   bottom:10%;
   right: 0; */
-  position:fixed;
-	width:60px;
-	height:60px;
-	bottom:40px;
-	right:40px;
-	background-color:#25d366;
-	color:#FFF;
-	border-radius:50px;
-	text-align:center;
-  font-size:30px;
-	box-shadow: 2px 2px 3px #999;
-  z-index:100;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
 }
-@media screen and (min-width:991px) {
+@media screen and (min-width: 991px) {
   .search-bar {
-    bottom:-8%;
-    position: absolute;
+    bottom: -8%;
+    /* position: absolute; */
   }
   .banner-container {
     position: relative;

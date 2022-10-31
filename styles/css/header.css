@@ -75,7 +75,7 @@
 
 .img-logo {
   width: 209px;
-  height: 56px;
+  height: 60px;
 }
 
 .check-property {
@@ -96,20 +96,19 @@
     width: 165px;
     height: 50px;
   }
-
 }
 @media screen and (max-width: 1000px) {
-    .check-property {
-  border: 2px solid #ced4da;
-  margin-left: 2px;
-  border-radius: 4px;
-   padding: 5px 50px !important;
-  width: 220px;
-}
-.radio-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
+  .check-property {
+    border: 2px solid #ced4da;
+    margin-left: 2px;
+    border-radius: 4px;
+    padding: 5px 50px !important;
+    width: 220px;
+  }
+  .radio-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
 }

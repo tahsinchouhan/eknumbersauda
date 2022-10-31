@@ -1,30 +1,17 @@
-import React, { useState} from "react";
-import {
-  Navbar,
-  Container,
-  Nav,
-  NavDropdown,
-  Button,
-  Form,
-  FormControl,
-  Offcanvas,
-} from "react-bootstrap";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import logo from "../public/images/logo.png";
+import React, { useState } from "react";
+import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
+import { FiMenu } from "react-icons/fi";
+import logo from "../public/images/logo1.jpg";
 import ButtonComponent from "./button/buttonComponent";
 import Rent from "./commonComponent/modal/rentOne";
-import ServiceBox from "./commonComponent/sevices/serviceBox";
-import { BiHomeAlt } from "react-icons/bi";
-import { FiMenu } from "react-icons/fi";
-import Ratiing from "./home/rating/Ratiing";
-import Home from "../pages/home";
 
 export default function Header() {
   const router = useRouter();
 
-  const { slug } = router.query
+  const { slug } = router.query;
 
   const [modalOpen, setModalOpen] = useState(false); // MODAL STATE TRUE FALSE
   const [serviceActive, setServiceActive] = useState(0);
@@ -38,7 +25,7 @@ export default function Header() {
   const handleClose = () => setModalOpen(false); // MODAL STATE SET FALSE
   const handleOpen = () => setModalOpen(true); // MODAL STATE SET TRUE
 
-  const [expand, setExpand] = useState(false)
+  const [expand, setExpand] = useState(false);
 
   const navHandleClose = () => setExpand(false);
   const navHandleShow = () => setExpand("expanded");
@@ -48,12 +35,11 @@ export default function Header() {
   // const testimonialsScroll = () => {
   //   testimonialRef.current.scrollIntoView({ behavior: "smooth" });
   //   // router.push({
-    //   pathname: '#testimonials',
-    //   asPath:'#testimonials',
-    //   query: { testimonialRef:testimonialRef},
-    // })
+  //   pathname: '#testimonials',
+  //   asPath:'#testimonials',
+  //   query: { testimonialRef:testimonialRef},
+  // })
   // };
-
 
   // useEffect(() => {
   //   if ( testimonialRef.current) {
@@ -66,13 +52,13 @@ export default function Header() {
       <Navbar
         collapseOnSelect
         expand="lg"
-        className="paridhi_header d-none d-lg-block pt-4"
+        className="paridhi_header d-none d-lg-block"
       >
         <Container>
           <Navbar.Brand className="me-0 logo-brand" href="#home">
             <div className="img-logo">
               <Link href="/">
-                <Image src={logo} alt="logo" />
+                <Image src={logo} alt="logo" height={60} width={180} />
               </Link>
             </div>
           </Navbar.Brand>
@@ -83,7 +69,7 @@ export default function Header() {
           >
             <Nav className="mx-auto justify-content-around align-items-center w-75">
               <div className=" active-link-div sm-mb-5 ">
-                <Link href="/" >
+                <Link href="/">
                   <p className={router.pathname === "/" ? "active " : ""}>
                     Home
                   </p>
@@ -167,15 +153,14 @@ export default function Header() {
       </Navbar>
       {modalOpen && <Rent show={handleOpen} close={handleClose} />}
       <div className="mobile_view_home d-lg-none">
-        <Navbar className="d-block" expanded={expand} >
+        <Navbar className="d-block" expanded={expand}>
           <Navbar.Offcanvas
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
             placement="end"
-          // expanded={expand}
+            // expanded={expand}
           >
             <Offcanvas.Header closeButton onClick={navHandleClose}>
-
               <Navbar.Brand className="me-0 logo-brand">
                 <div className="img-logo">
                   <Link href="/">
@@ -196,11 +181,7 @@ export default function Header() {
                 </div>
                 <div className="   active-link-div sm-mb-5">
                   <Link href="/buy">
-                    <p
-                      className={
-                        router.pathname === "/buy" ? "active " : ""
-                      }
-                    >
+                    <p className={router.pathname === "/buy" ? "active " : ""}>
                       Buy
                     </p>
                   </Link>
@@ -208,11 +189,7 @@ export default function Header() {
                 </div>
                 <div className=" active-link-div sm-mb-5">
                   <Link href="/rent">
-                    <p
-                      className={
-                        router.pathname === "/rent" ? "active " : ""
-                      }
-                    >
+                    <p className={router.pathname === "/rent" ? "active " : ""}>
                       Rent
                     </p>
                   </Link>
@@ -236,9 +213,7 @@ export default function Header() {
                   <Link href="/#services">
                     <p
                       className={
-                        router.pathname === "/common/services"
-                          ? "active"
-                          : ""
+                        router.pathname === "/common/services" ? "active" : ""
                       }
                     >
                       Services
@@ -249,9 +224,7 @@ export default function Header() {
                 <div className=" active-link-div">
                   <Link href="/#about">
                     <p
-                      className={
-                        router.pathname === "/#about" ? "active " : ""
-                      }
+                      className={router.pathname === "/#about" ? "active " : ""}
                     >
                       About us
                     </p>
@@ -262,9 +235,7 @@ export default function Header() {
                   <Link href="/#contact">
                     <p
                       className={
-                        router.pathname === "/common/contact"
-                          ? "active "
-                          : ""
+                        router.pathname === "/common/contact" ? "active " : ""
                       }
                     >
                       Contact us

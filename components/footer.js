@@ -1,12 +1,10 @@
-import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import logo from "../public/images/logo.png";
-import { FaYoutube, FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import logo from "../public/images/logo1.jpg";
 import Rent from "./commonComponent/modal/rentOne";
-import Buy from "../pages/buy";
-import SearchBox from "./commonComponent/searchBox/searchBox";
 
 export default function Footer() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,8 +22,8 @@ export default function Footer() {
                 <Image
                   src={logo}
                   alt="Paridhi-Group Logo"
-                  width={133}
-                  height={35}
+                  width={160}
+                  height={60}
                 />
                 <p className="footer-para pt-2 m-auto m-lg-0 w-75">
                   We commited to ensuring digital accessbility for individuals
@@ -33,7 +31,6 @@ export default function Footer() {
               </div>
             </Col>
             <Col md={12} lg={{ span: 2, offset: 1 }} className="my-2 my-lg-0 ">
-
               <h5 className="fw-bold"> Important Link </h5>
               <p className="mb-2 footer-text">
                 <Link href="/#"> Search Property </Link>
@@ -41,17 +38,26 @@ export default function Footer() {
               <p className="mb-2 footer-text">
                 <Link href="/buy"> Buy Property </Link>
               </p>
-              <p className="mb-2 footer-text" onClick={() => { setModalOpen(true) }}>
+              <p
+                className="mb-2 footer-text"
+                onClick={() => {
+                  setModalOpen(true);
+                }}
+              >
                 Rent Property
                 {/* <Link href="/rent">Rent Property </Link> */}
               </p>
-              <p className="mb-2 footer-text" onClick={() => { setModalOpen(true) }}>
+              <p
+                className="mb-2 footer-text"
+                onClick={() => {
+                  setModalOpen(true);
+                }}
+              >
                 Sell Property
                 {/* <Link href="/">Sell Property </Link> */}
               </p>
             </Col>
             <Col lg={2} md={12} className="my-2 my-lg-0 ">
-
               <h5 className="fw-bold footer-text"> About </h5>
               <p className="mb-2">
                 <Link href="/#about">About Us </Link>
@@ -63,19 +69,16 @@ export default function Footer() {
                 <Link href="/termsConditions">Terms &amp; Conditions</Link>
               </p>
               <p className="mb-2 footer-text">
-
                 <Link href="/privacyPolicy">Privacy Policy </Link>
               </p>
             </Col>
             <Col lg={4} md={12} className="my-2 my-lg-0">
               <h5 className="fw-bold"> Our Address </h5>
               <p className="mb-2">
-                4008/09/10, 4th Floor, Lalganga Currency Tower, VIP Chowk,
-                Chhattisgarh 492001
+                Infront of KPS Junior School, St. Xavier's School Road, Avanti
+                Vihar Raipur C.G.
               </p>
-              <p className="mb-2">
-                Çontact: +91-8388911911
-              </p>
+              <p className="mb-2">Çontact: +91-7000028760</p>
               <div className="d-flex justify-content-lg-start justify-content-center my-4">
                 <div className="icon-div rounded-circle me-2">
                   <Link href="https://www.facebook.com/facebook">
