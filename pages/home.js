@@ -21,7 +21,7 @@ function Home() {
   useEffect(() => {
     if (whatsRedirect) {
       window.location.href =
-        "https://api.whatsapp.com/send?phone=+919981476750&text=Hi";
+        "https://api.whatsapp.com/send?phone=+917000028760&text=Hi";
     }
   }, [whatsRedirect]);
 
@@ -29,7 +29,7 @@ function Home() {
     <>
       <div className="whatsapp_btn ">
         <Link
-          href="https://api.whatsapp.com/send?phone=+919981476750&text=Hi"
+          href="https://api.whatsapp.com/send?phone=+917000028760&text=Hi"
           clickOnButton={() => setWhatsRedirect(true)}
         >
           <BsWhatsapp className="mt-2" />

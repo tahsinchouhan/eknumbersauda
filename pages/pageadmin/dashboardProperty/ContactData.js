@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Button, Col, Row, Tab, Table, Tabs, InputGroup, FormControl, } from "react-bootstrap";
-import AdminDashboard from "../../../components/admin/adminDashboard";
-import Nav from "react-bootstrap/Nav";
-import DataTable from "react-data-table-component";
-import SidebarData from "../../../components/admin/adminContents/sidebarData";
-import { BsFillEyeFill } from "react-icons/bs";
-import BookViewProperty from "./bookViewProperty";
-import { useRouter } from "next/router";
-import Image from "next/image";
 import axios from "axios";
-import PropertyTable from "./PropertyTable";
-import ShowMore from "react-show-more";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { Col, FormControl, InputGroup, Row, Tab, Tabs } from "react-bootstrap";
+import DataTable from "react-data-table-component";
+import { BsFillEyeFill } from "react-icons/bs";
+import SidebarData from "../../../components/admin/adminContents/sidebarData";
 
 function ContactData() {
   const [propertyFormData, setPropertyFormData] = useState([]);
@@ -23,7 +17,7 @@ function ContactData() {
 
   // -------------------------------------book now--------------------
   const router = useRouter();
-  const { query } = useRouter()
+  const { query } = useRouter();
 
   const bookViewHandler = (propertyID, bookViewData) => {
     router.push(`./dashboardData/view/${propertyID}`);
@@ -39,11 +33,10 @@ function ContactData() {
   };
   useEffect(() => {
     bookNowCall();
-    if(query?.tab){
-      handleSelect(query.tab)
+    if (query?.tab) {
+      handleSelect(query.tab);
     }
   }, []);
-
 
   const postPropertyCall = () => {
     axios({
@@ -169,32 +162,32 @@ function ContactData() {
     const results = !searchInput
       ? bookData
       : bookData.filter((item) =>
-        item.name.toLowerCase().includes(searchInput)
-      );
+          item.name.toLowerCase().includes(searchInput)
+        );
     setFilterData(results);
-  }, [bookData, searchInput])
+  }, [bookData, searchInput]);
 
-  //---- Services-filter-list----// 
+  //---- Services-filter-list----//
 
   useEffect(() => {
     const results = !searchInput
       ? serviceFormData
       : serviceFormData.filter((item) =>
-        item.name.toLowerCase().includes(searchInput)
-      );
+          item.name.toLowerCase().includes(searchInput)
+        );
     setfilterService(results);
-  }, [serviceFormData, searchInput])
+  }, [serviceFormData, searchInput]);
 
-  //---- propertyFormData-filter-list----// 
+  //---- propertyFormData-filter-list----//
 
   useEffect(() => {
     const results = !searchInput
       ? propertyFormData
       : propertyFormData.filter((item) =>
-        item.name.toLowerCase().includes(searchInput)
-      );
+          item.name.toLowerCase().includes(searchInput)
+        );
     setFilterPropertyData(results);
-  }, [propertyFormData, searchInput])
+  }, [propertyFormData, searchInput]);
 
   // ----- ReadMore -----//
   const ReadMore = ({ children }) => {
@@ -216,11 +209,11 @@ function ContactData() {
   };
 
   useEffect(() => {
-    const login= JSON.parse(localStorage.getItem("login"))
-    if(!login){
-      router.push("/pageadmin")
+    const login = JSON.parse(localStorage.getItem("login"));
+    if (!login) {
+      router.push("/pageadmin");
     }
-   }, [])
+  }, []);
   return (
     <div>
       <div>
@@ -229,7 +222,7 @@ function ContactData() {
             className="text-white m-0 fw-bold andmin-paridhi-text"
             style={{ letterSpacing: "3px" }}
           >
-            PARIDHI
+            Ek Number Sauda
           </h5>
         </div>
         <div className=" ">
@@ -246,7 +239,7 @@ function ContactData() {
 
               <Tabs
                 justify
-                defaultactivekey={query?.tab ? query.tab : "BookNow" }
+                defaultactivekey={query?.tab ? query.tab : "BookNow"}
                 // defaultactivekey="Book Now"
                 id="uncontrolled-tab-example"
                 className="mb-3 mb-md-5 best_real_tab"
@@ -313,7 +306,6 @@ function ContactData() {
                   className="best_real_nav"
                 >
                   <div>
-
                     <Row>
                       <Col md={3} className="marginLeft-auto mb-4">
                         <InputGroup className="mb-3">

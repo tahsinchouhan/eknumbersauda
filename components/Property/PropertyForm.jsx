@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Card, Row, Col, Form } from "react-bootstrap";
-import { useFormik } from "formik";
-import * as yup from "yup";
 import axios from "axios";
+import { useFormik } from "formik";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { Card, Col, Form, Row } from "react-bootstrap";
 import Select from "react-select";
 import { toast } from "react-toastify";
-import ButtonComponent from "../button/buttonComponent";
+import * as yup from "yup";
 import SidebarData from "../admin/adminContents/sidebarData";
+import ButtonComponent from "../button/buttonComponent";
 import ImageUploadMultiple from "../commonComponent/ImageUploadMultiple";
 
 const options = [
@@ -30,38 +30,42 @@ const options = [
 ];
 
 function PropertyForm({ viewMode = false }) {
-  const router = useRouter()
+  const router = useRouter();
   const id = router.query.propertyTableId;
 
-  const [change, setChange] = useState(false)
-  const [btnShow, setBtnShow] = useState(false)
-  const [propertyFlat, setPropertyFlat] = useState({ value: "", label: "" })
-  const [amenitiesItem, setAmenitiesItem] = useState({ value: "", label: "", icon: "" })
+  const [change, setChange] = useState(false);
+  const [btnShow, setBtnShow] = useState(false);
+  const [propertyFlat, setPropertyFlat] = useState({ value: "", label: "" });
+  const [amenitiesItem, setAmenitiesItem] = useState({
+    value: "",
+    label: "",
+    icon: "",
+  });
 
   const [mapUrl, setmapUrl] = useState("");
-  const [loading, setLoading] = useState(false)
-  const [amenitiesDefault, setAmenitiesDefault] = useState([])
-  const [imgs, setImgs] = useState([])
-  const [imgsError, setImgsError] = useState("")
+  const [loading, setLoading] = useState(false);
+  const [amenitiesDefault, setAmenitiesDefault] = useState([]);
+  const [imgs, setImgs] = useState([]);
+  const [imgsError, setImgsError] = useState("");
 
   // const phoneRegExp = /^[6-9][0-9]{9}$/;
 
   const validationSchema = yup.object().shape({
-    title: yup.string().required('Title is required'),
-    propertyname: yup.string().required('Atlease one is required'),
+    title: yup.string().required("Title is required"),
+    propertyname: yup.string().required("Atlease one is required"),
 
     realprice: yup.number().when("propertyname", {
       is: (propertyname) => propertyname === "property",
-      then: yup.number().required('Real Price is required')
+      then: yup.number().required("Real Price is required"),
     }),
     offerprice: yup.number().when("propertyname", {
       is: (propertyname) => propertyname === "property",
-      then: yup.number().required('Offer Price is required')
+      then: yup.number().required("Offer Price is required"),
     }),
 
     sqft: yup.number().when("propertyname", {
       is: (propertyname) => propertyname === "property",
-      then: yup.number().required('Sqft  is required')
+      then: yup.number().required("Sqft  is required"),
     }),
     // ratepersqft: yup.number().when("propertyname", {
     //   is: (propertyname) => propertyname === "property",
@@ -70,38 +74,35 @@ function PropertyForm({ viewMode = false }) {
 
     minprice: yup.number().when("propertyname", {
       is: (propertyname) => propertyname === "project",
-      then: yup.number().required('Minimum price Price is required')
-    }
-    ),
+      then: yup.number().required("Minimum price Price is required"),
+    }),
     maxprice: yup.number().when("propertyname", {
       is: (propertyname) => propertyname === "project",
-      then: yup.number().required('Maximum price Price is required')
+      then: yup.number().required("Maximum price Price is required"),
     }),
 
-
-
-    address: yup.string().required('Address is required'),
-    description: yup.string().required('Description is required'),
-    location: yup.string().required('Location is required'),
-    type: yup.string().required('Type is required'),
-    images: yup.array().required('Image is required'),
-    amenities: yup.array().required('Amenities is required'),
+    address: yup.string().required("Address is required"),
+    description: yup.string().required("Description is required"),
+    location: yup.string().required("Location is required"),
+    type: yup.string().required("Type is required"),
+    images: yup.array().required("Image is required"),
+    amenities: yup.array().required("Amenities is required"),
     // amenities: yup.array().required('Atleast One Amenities is required'),
-    property: yup.string().required('Property Type is required'),
+    property: yup.string().required("Property Type is required"),
 
-    whychoose1: yup.string().required('This is required'),
-    whychoose2: yup.string().required('This is required'),
-    whychoose3: yup.string().required('This is required'),
-    whychoose4: yup.string().required('This is required'),
-    whychoose5: yup.string().required('This is required'),
+    whychoose1: yup.string().required("This is required"),
+    whychoose2: yup.string().required("This is required"),
+    whychoose3: yup.string().required("This is required"),
+    whychoose4: yup.string().required("This is required"),
+    whychoose5: yup.string().required("This is required"),
 
     // ownerdetails: yup.object().required('ownerdetails is required'),
 
-    ownername: yup.string().required('Owner Name is required'),
-    owneraddress: yup.string().required('Owner Address is required'),
-    ownerphone: yup.string().required('Owner Phone is required'),
-    rera: yup.string().required('RERA is required'),
-    iframe: yup.string().required('Map Area is required'),
+    ownername: yup.string().required("Owner Name is required"),
+    owneraddress: yup.string().required("Owner Address is required"),
+    ownerphone: yup.string().required("Owner Phone is required"),
+    rera: yup.string().required("RERA is required"),
+    iframe: yup.string().required("Map Area is required"),
   });
 
   const initialValues = {
@@ -139,12 +140,11 @@ function PropertyForm({ viewMode = false }) {
   };
 
   useEffect(() => {
-    const login = JSON.parse(localStorage.getItem("login"))
+    const login = JSON.parse(localStorage.getItem("login"));
     if (!login) {
-      router.push("/pageadmin")
+      router.push("/pageadmin");
     }
-  }, [])
-
+  }, []);
 
   useEffect(() => {
     getProperyOption();
@@ -164,16 +164,16 @@ function PropertyForm({ viewMode = false }) {
         const data = res.data.map((item) => {
           return {
             label: item.type,
-            value: { value: item.type, icon: item.icon, },
+            value: { value: item.type, icon: item.icon },
             // icon: item.icon,
           };
         });
-        setAmenitiesItem(data)
+        setAmenitiesItem(data);
       })
       .catch((res) => {
         return res || [];
       });
-  }
+  };
   const getProperyOption = () => {
     axios
       .get(`/api/actions/propertytype`)
@@ -184,7 +184,7 @@ function PropertyForm({ viewMode = false }) {
             value: item.type,
           };
         });
-        setPropertyFlat(aa)
+        setPropertyFlat(aa);
       })
       .catch((res) => {
         return res || [];
@@ -199,60 +199,66 @@ function PropertyForm({ viewMode = false }) {
   };
 
   useEffect(() => {
-
     if (id) {
-      setLoading(true)
-      axios.get(`/api/actions/uploadproperty/${id}`)
+      setLoading(true);
+      axios
+        .get(`/api/actions/uploadproperty/${id}`)
         .then((res) => {
-          formik.setFieldValue("title", res.data.title)
-          formik.setFieldValue("realprice", res.data.realprice || 0)
-          formik.setFieldValue("offerprice", res.data.offerprice || 0)
-          formik.setFieldValue("minprice", res.data.minprice || 0)
-          formik.setFieldValue("maxprice", res.data.maxprice || 0)
-          formik.setFieldValue("address", res.data.address)
-          formik.setFieldValue("sqft", res.data.sqft || 0)
-          formik.setFieldValue("ratepersqft", res.data.ratepersqft || 0)
-          formik.setFieldValue("description", res.data.description)
-          formik.setFieldValue("location", res.data.location)
-          formik.setFieldValue("propertyname", res.data.propertyname)
-          formik.setFieldValue("property", res.data.property)
-          formik.setFieldValue("type", res.data.type)
-          formik.setFieldValue("amenities", res.data.amenities)
-          formik.setFieldValue("iframe", res.data.iframe)
-          formik.setFieldValue("images", res.data.images.map((img) => ({ ...img, src: img })))
-          formik.setFieldValue("ownername", res.data.ownername)
-          formik.setFieldValue("owneraddress", res.data.owneraddress)
-          formik.setFieldValue("ownerphone", res.data.ownerphone)
-          formik.setFieldValue("whychoose1", res.data.whychoose1)
-          formik.setFieldValue("whychoose2", res.data.whychoose2)
-          formik.setFieldValue("whychoose3", res.data.whychoose3)
-          formik.setFieldValue("whychoose4", res.data.whychoose4)
-          formik.setFieldValue("whychoose5", res.data.whychoose5)
-          formik.setFieldValue("rera", res.data.rera)
+          formik.setFieldValue("title", res.data.title);
+          formik.setFieldValue("realprice", res.data.realprice || 0);
+          formik.setFieldValue("offerprice", res.data.offerprice || 0);
+          formik.setFieldValue("minprice", res.data.minprice || 0);
+          formik.setFieldValue("maxprice", res.data.maxprice || 0);
+          formik.setFieldValue("address", res.data.address);
+          formik.setFieldValue("sqft", res.data.sqft || 0);
+          formik.setFieldValue("ratepersqft", res.data.ratepersqft || 0);
+          formik.setFieldValue("description", res.data.description);
+          formik.setFieldValue("location", res.data.location);
+          formik.setFieldValue("propertyname", res.data.propertyname);
+          formik.setFieldValue("property", res.data.property);
+          formik.setFieldValue("type", res.data.type);
+          formik.setFieldValue("amenities", res.data.amenities);
+          formik.setFieldValue("iframe", res.data.iframe);
+          formik.setFieldValue(
+            "images",
+            res.data.images.map((img) => ({ ...img, src: img }))
+          );
+          formik.setFieldValue("ownername", res.data.ownername);
+          formik.setFieldValue("owneraddress", res.data.owneraddress);
+          formik.setFieldValue("ownerphone", res.data.ownerphone);
+          formik.setFieldValue("whychoose1", res.data.whychoose1);
+          formik.setFieldValue("whychoose2", res.data.whychoose2);
+          formik.setFieldValue("whychoose3", res.data.whychoose3);
+          formik.setFieldValue("whychoose4", res.data.whychoose4);
+          formik.setFieldValue("whychoose5", res.data.whychoose5);
+          formik.setFieldValue("rera", res.data.rera);
 
-          setImgs(res.data.images.map((img) => ({ ...img, src: img })))
+          setImgs(res.data.images.map((img) => ({ ...img, src: img })));
           setmapUrl(res.data.iframe);
-          let amenities = res.data.amenities?.length > 0 ? res.data.amenities?.map(i => ({ value: i, label: i.value })) : []
-          setAmenitiesDefault(amenities)
-          setLoading(false)
-        }).catch((err) => {
-          console.log("PropertyForm", err)
+          let amenities =
+            res.data.amenities?.length > 0
+              ? res.data.amenities?.map((i) => ({ value: i, label: i.value }))
+              : [];
+          setAmenitiesDefault(amenities);
+          setLoading(false);
         })
+        .catch((err) => {
+          console.log("PropertyForm", err);
+        });
     }
-
-  }, [id])
+  }, [id]);
 
   const onSubmit = async (values) => {
     try {
-      setLoading(true)
+      setLoading(true);
 
       const FORMDATA = new FormData();
       const img = [];
       if (imgs.length < 0) {
-        return setImgsError("Atleast one image required")
+        return setImgsError("Atleast one image required");
       }
       for (var i = 0; i < imgs.length; i++) {
-        let f = imgs[i]
+        let f = imgs[i];
         const file = f.file;
         if (file) {
           FORMDATA.append("file", file);
@@ -297,42 +303,44 @@ function PropertyForm({ viewMode = false }) {
       };
 
       if (btnShow) {
-
-        id =
-          axios.put(`/api/actions/uploadproperty/${id}`, payload)
-            .then((res) => {
-              if (res) {
-                setChange(!change);
-                toast.success("property updated successfully", { theme: "colored", });
-                setLoading(false)
-                router.push("../propertyData");
-
-              }
-            })
-            .catch((res) => {
-              toast.error("something went wrong", { theme: "colored", });
-              setLoading(false)
-              return res || [];
-            });
+        id = axios
+          .put(`/api/actions/uploadproperty/${id}`, payload)
+          .then((res) => {
+            if (res) {
+              setChange(!change);
+              toast.success("property updated successfully", {
+                theme: "colored",
+              });
+              setLoading(false);
+              router.push("../propertyData");
+            }
+          })
+          .catch((res) => {
+            toast.error("something went wrong", { theme: "colored" });
+            setLoading(false);
+            return res || [];
+          });
       } else {
         axios
           .post(`/api/actions/uploadproperty`, payload)
           .then((res) => {
             if (res.data) {
               setChange(!change);
-              setLoading(false)
-              toast.success("property added successfully", { theme: "colored", });
+              setLoading(false);
+              toast.success("property added successfully", {
+                theme: "colored",
+              });
               router.push("./propertyData");
             }
           })
           .catch((err) => {
-            toast.error("something went wrong", { theme: "colored", });
-            setLoading(false)
+            toast.error("something went wrong", { theme: "colored" });
+            setLoading(false);
           });
       }
-      resetForm(initialValues)
+      resetForm(initialValues);
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -349,7 +357,7 @@ function PropertyForm({ viewMode = false }) {
   // const toasterHanle = () => {
   //   return <ToastContainer />
   // }
-  if (loading) return <div className="text-center mt-5">loading....</div>
+  if (loading) return <div className="text-center mt-5">loading....</div>;
 
   return (
     <>
@@ -359,7 +367,7 @@ function PropertyForm({ viewMode = false }) {
             className="text-white m-0 fw-bold andmin-paridhi-text"
             style={{ letterSpacing: "3px" }}
           >
-            PARIDHI
+            Ek Number Sauda
           </h5>
         </div>
         <div className="d-flex">
@@ -373,7 +381,9 @@ function PropertyForm({ viewMode = false }) {
                   <div className="col-md-6 mt-5">
                     <div className="mx-4 mb-4">
                       <div>
-                        <h4 className="header mx-4 px-3 pt-2 mb-3">Properties</h4>
+                        <h4 className="header mx-4 px-3 pt-2 mb-3">
+                          Properties
+                        </h4>
                       </div>
 
                       <Row className="mx-4">
@@ -394,15 +404,13 @@ function PropertyForm({ viewMode = false }) {
                               multiple
                               images={imgs}
                               setImages={(images) => {
-                                setImgsError("")
+                                setImgsError("");
                                 setImgs(images);
                               }}
                               disabled={viewMode}
                             />
                             {imgsError && (
-                              <small className="text-danger">
-                                {imgsError}
-                              </small>
+                              <small className="text-danger">{imgsError}</small>
                             )}
                           </Form.Group>
                         </Col>
@@ -433,8 +441,7 @@ function PropertyForm({ viewMode = false }) {
                                 value="property"
                                 disabled={viewMode}
                                 checked={
-                                  formik.values.propertyname ===
-                                  "property"
+                                  formik.values.propertyname === "property"
                                 }
                                 onChange={() =>
                                   formik.setFieldValue(
@@ -446,11 +453,12 @@ function PropertyForm({ viewMode = false }) {
                               <div className="m-2">Other-Property</div>
                             </label>
                           </div>
-                          {formik.touched.propertyname && formik.errors.propertyname && (
-                            <small className="text-danger mx-3">
-                              {formik.errors.propertyname}
-                            </small>
-                          )}
+                          {formik.touched.propertyname &&
+                            formik.errors.propertyname && (
+                              <small className="text-danger mx-3">
+                                {formik.errors.propertyname}
+                              </small>
+                            )}
                         </Col>
                         <Col lg={12} md={12}>
                           <div>
@@ -461,8 +469,7 @@ function PropertyForm({ viewMode = false }) {
                                 value="Featured"
                                 disabled={viewMode}
                                 checked={
-                                  formik.values.featuredname ===
-                                  "Featured"
+                                  formik.values.featuredname === "Featured"
                                 }
                                 onChange={() =>
                                   formik.setFieldValue(
@@ -473,11 +480,12 @@ function PropertyForm({ viewMode = false }) {
                               />
                               <div className="m-2">Featured</div>
                             </label>
-                            {formik.touched.featuredname && formik.errors.featuredname && (
-                              <small className="text-danger mx-3">
-                                {formik.errors.featuredname}
-                              </small>
-                            )}
+                            {formik.touched.featuredname &&
+                              formik.errors.featuredname && (
+                                <small className="text-danger mx-3">
+                                  {formik.errors.featuredname}
+                                </small>
+                              )}
                           </div>
                         </Col>
                         <Col lg={12} md={12} className="mb-4">
@@ -541,7 +549,7 @@ function PropertyForm({ viewMode = false }) {
                           </Form.Group>
                         </Col>
 
-                        {formik.values.propertyname === "project" &&
+                        {formik.values.propertyname === "project" && (
                           <>
                             <Col lg={12} md={12}>
                               <Form.Group
@@ -564,11 +572,12 @@ function PropertyForm({ viewMode = false }) {
                                     );
                                   }}
                                 />
-                                {formik.touched.minprice && formik.errors.minprice && (
-                                  <small className="text-danger">
-                                    {formik.errors.minprice}
-                                  </small>
-                                )}
+                                {formik.touched.minprice &&
+                                  formik.errors.minprice && (
+                                    <small className="text-danger">
+                                      {formik.errors.minprice}
+                                    </small>
+                                  )}
                               </Form.Group>
                             </Col>
                             <Col lg={12} md={12}>
@@ -592,11 +601,12 @@ function PropertyForm({ viewMode = false }) {
                                     );
                                   }}
                                 />
-                                {formik.touched.maxprice && formik.errors.maxprice && (
-                                  <small className="text-danger">
-                                    {formik.errors.maxprice}
-                                  </small>
-                                )}
+                                {formik.touched.maxprice &&
+                                  formik.errors.maxprice && (
+                                    <small className="text-danger">
+                                      {formik.errors.maxprice}
+                                    </small>
+                                  )}
                               </Form.Group>
                             </Col>
                             <Col lg={12} md={12}>
@@ -620,16 +630,17 @@ function PropertyForm({ viewMode = false }) {
                                     );
                                   }}
                                 />
-                                {formik.touched.ratepersqft && formik.errors.ratepersqft && (
-                                  <small className="text-danger">
-                                    {formik.errors.ratepersqft}
-                                  </small>
-                                )}
+                                {formik.touched.ratepersqft &&
+                                  formik.errors.ratepersqft && (
+                                    <small className="text-danger">
+                                      {formik.errors.ratepersqft}
+                                    </small>
+                                  )}
                               </Form.Group>
                             </Col>
-                          </>}
-                        {formik.values.propertyname ===
-                          "property" &&
+                          </>
+                        )}
+                        {formik.values.propertyname === "property" && (
                           <>
                             <Col lg={12} md={12}>
                               <Form.Group
@@ -652,11 +663,12 @@ function PropertyForm({ viewMode = false }) {
                                     );
                                   }}
                                 />
-                                {formik.touched.realprice && formik.errors.realprice && (
-                                  <small className="text-danger">
-                                    {formik.errors.realprice}
-                                  </small>
-                                )}
+                                {formik.touched.realprice &&
+                                  formik.errors.realprice && (
+                                    <small className="text-danger">
+                                      {formik.errors.realprice}
+                                    </small>
+                                  )}
                               </Form.Group>
                             </Col>
                             <Col lg={12} md={12}>
@@ -680,11 +692,12 @@ function PropertyForm({ viewMode = false }) {
                                     );
                                   }}
                                 />
-                                {formik.touched.offerprice && formik.errors.offerprice && (
-                                  <small className="text-danger">
-                                    {formik.errors.offerprice}
-                                  </small>
-                                )}
+                                {formik.touched.offerprice &&
+                                  formik.errors.offerprice && (
+                                    <small className="text-danger">
+                                      {formik.errors.offerprice}
+                                    </small>
+                                  )}
                               </Form.Group>
                             </Col>
                             <Col lg={12} md={12}>
@@ -736,15 +749,16 @@ function PropertyForm({ viewMode = false }) {
                                     );
                                   }}
                                 />
-                                {formik.touched.ratepersqft && formik.errors.ratepersqft && (
-                                  <small className="text-danger">
-                                    {formik.errors.ratepersqft}
-                                  </small>
-                                )}
+                                {formik.touched.ratepersqft &&
+                                  formik.errors.ratepersqft && (
+                                    <small className="text-danger">
+                                      {formik.errors.ratepersqft}
+                                    </small>
+                                  )}
                               </Form.Group>
                             </Col>
-                          </>}
-
+                          </>
+                        )}
 
                         {/* <Col lg={12} md={12}>
                           <Form.Group
@@ -820,11 +834,12 @@ function PropertyForm({ viewMode = false }) {
                                 formik.setFieldValue("address", e.target.value);
                               }}
                             />
-                            {formik.touched.address && formik.errors.address && (
-                              <small className="text-danger">
-                                {formik.errors.address}
-                              </small>
-                            )}
+                            {formik.touched.address &&
+                              formik.errors.address && (
+                                <small className="text-danger">
+                                  {formik.errors.address}
+                                </small>
+                              )}
                           </Form.Group>
                         </Col>
                         <Col lg={12} md={12}>
@@ -836,7 +851,7 @@ function PropertyForm({ viewMode = false }) {
                           >
                             <Form.Control
                               // as="textarea"
-                              // rows={4}  
+                              // rows={4}
                               className="p-3"
                               placeholder=" Description"
                               disabled={viewMode}
@@ -850,11 +865,12 @@ function PropertyForm({ viewMode = false }) {
                                 );
                               }}
                             />
-                            {formik.touched.description && formik.errors.description && (
-                              <small className="text-danger">
-                                {formik.errors.description}
-                              </small>
-                            )}
+                            {formik.touched.description &&
+                              formik.errors.description && (
+                                <small className="text-danger">
+                                  {formik.errors.description}
+                                </small>
+                              )}
                           </Form.Group>
                         </Col>
 
@@ -879,11 +895,12 @@ function PropertyForm({ viewMode = false }) {
                                 );
                               }}
                             />
-                            {formik.touched.location && formik.errors.location && (
-                              <small className="text-danger">
-                                {formik.errors.location}
-                              </small>
-                            )}
+                            {formik.touched.location &&
+                              formik.errors.location && (
+                                <small className="text-danger">
+                                  {formik.errors.location}
+                                </small>
+                              )}
                           </Form.Group>
                         </Col>
 
@@ -962,8 +979,6 @@ function PropertyForm({ viewMode = false }) {
                           </div>
                         </Col> */}
 
-
-
                         <Col lg={12} md={12} className="mb-4">
                           <Form.Group>
                             <label className="mb-3">
@@ -979,16 +994,15 @@ function PropertyForm({ viewMode = false }) {
                               onChange={onChange}
                               defaultValue={amenitiesDefault}
                               isOptionDisabled={(v) => viewMode}
-                              isClearable={options.map(v => viewMode)}
+                              isClearable={options.map((v) => viewMode)}
                             />
-                            {formik.touched.amenities && formik.errors.amenities && (
-                              <small className="text-danger">
-                                {formik.errors.amenities}
-                              </small>
-                            )}
-
+                            {formik.touched.amenities &&
+                              formik.errors.amenities && (
+                                <small className="text-danger">
+                                  {formik.errors.amenities}
+                                </small>
+                              )}
                           </Form.Group>
-
                         </Col>
                         <Col lg={12} md={12} className="mb-4">
                           <Form.Group>
@@ -1003,20 +1017,29 @@ function PropertyForm({ viewMode = false }) {
                               // defaultValue={propertyFlat}
                               {...formik.getFieldProps("property")}
                               onChange={(e) => {
-                                formik.setFieldValue("property", e.target.value);
-                              }}>
-                              {propertyFlat.length > 0 ? propertyFlat.map((item, _id) => {
-                                return (
-                                  <option value={item.label} key={_id} >{item.label}</option>
-                                )
-                              }) : null}
+                                formik.setFieldValue(
+                                  "property",
+                                  e.target.value
+                                );
+                              }}
+                            >
+                              {propertyFlat.length > 0
+                                ? propertyFlat.map((item, _id) => {
+                                    return (
+                                      <option value={item.label} key={_id}>
+                                        {item.label}
+                                      </option>
+                                    );
+                                  })
+                                : null}
                             </Form.Select>
                           </Form.Group>
-                          {formik.touched.property && formik.errors.property && (
-                            <small className="text-danger">
-                              {formik.errors.property}
-                            </small>
-                          )}
+                          {formik.touched.property &&
+                            formik.errors.property && (
+                              <small className="text-danger">
+                                {formik.errors.property}
+                              </small>
+                            )}
                         </Col>
 
                         <Col lg={12} md={12}>
@@ -1043,11 +1066,12 @@ function PropertyForm({ viewMode = false }) {
                                 );
                               }}
                             />
-                            {formik.touched.whychoose1 && formik.errors.whychoose1 && (
-                              <small className="text-danger">
-                                {formik.errors.whychoose1}
-                              </small>
-                            )}
+                            {formik.touched.whychoose1 &&
+                              formik.errors.whychoose1 && (
+                                <small className="text-danger">
+                                  {formik.errors.whychoose1}
+                                </small>
+                              )}
                           </Form.Group>
                         </Col>
                         <Col lg={12} md={12}>
@@ -1071,11 +1095,12 @@ function PropertyForm({ viewMode = false }) {
                                 );
                               }}
                             />
-                            {formik.touched.whychoose2 && formik.errors.whychoose2 && (
-                              <small className="text-danger">
-                                {formik.errors.whychoose2}
-                              </small>
-                            )}
+                            {formik.touched.whychoose2 &&
+                              formik.errors.whychoose2 && (
+                                <small className="text-danger">
+                                  {formik.errors.whychoose2}
+                                </small>
+                              )}
                           </Form.Group>
                         </Col>
 
@@ -1100,11 +1125,12 @@ function PropertyForm({ viewMode = false }) {
                                 );
                               }}
                             />
-                            {formik.touched.whychoose3 && formik.errors.whychoose3 && (
-                              <small className="text-danger">
-                                {formik.errors.whychoose3}
-                              </small>
-                            )}
+                            {formik.touched.whychoose3 &&
+                              formik.errors.whychoose3 && (
+                                <small className="text-danger">
+                                  {formik.errors.whychoose3}
+                                </small>
+                              )}
                           </Form.Group>
                         </Col>
                         <Col lg={12} md={12}>
@@ -1128,11 +1154,12 @@ function PropertyForm({ viewMode = false }) {
                                 );
                               }}
                             />
-                            {formik.touched.whychoose4 && formik.errors.whychoose4 && (
-                              <small className="text-danger">
-                                {formik.errors.whychoose4}
-                              </small>
-                            )}
+                            {formik.touched.whychoose4 &&
+                              formik.errors.whychoose4 && (
+                                <small className="text-danger">
+                                  {formik.errors.whychoose4}
+                                </small>
+                              )}
                           </Form.Group>
                         </Col>
 
@@ -1157,24 +1184,25 @@ function PropertyForm({ viewMode = false }) {
                                 );
                               }}
                             />
-                            {formik.touched.whychoose5 && formik.errors.whychoose5 && (
-                              <small className="text-danger">
-                                {formik.errors.whychoose5}
-                              </small>
-                            )}
+                            {formik.touched.whychoose5 &&
+                              formik.errors.whychoose5 && (
+                                <small className="text-danger">
+                                  {formik.errors.whychoose5}
+                                </small>
+                              )}
                           </Form.Group>
                         </Col>
                         <Col lg={12} md={12}>
-                          {viewMode ?
+                          {viewMode ? (
                             <ButtonComponent
                               type="button"
                               className="btn btn_contact"
                               text="Back"
                               style=" my-3 px-5 py-3 cancel_btn_property"
                               clickOnButton={() => router.back()}
-                            // disabled={viewMode}
+                              // disabled={viewMode}
                             />
-                            :
+                          ) : (
                             <div className="d-flex justify-content-between">
                               <ButtonComponent
                                 type="button"
@@ -1182,17 +1210,17 @@ function PropertyForm({ viewMode = false }) {
                                 text="Cancel"
                                 style=" my-3 px-5 py-3 cancel_btn_property"
                                 clickOnButton={cancelProperty}
-                              // disabled={viewMode}
+                                // disabled={viewMode}
                               />
                               <ButtonComponent
                                 type="submit"
                                 className="btn btn_contact"
                                 text={btnShow ? "Update" : "Submit"}
                                 style=" my-3 px-5 py-3"
-                              // disabled={viewMode}
+                                // disabled={viewMode}
                               />
                             </div>
-                          }
+                          )}
                         </Col>
                       </Row>
                     </div>
@@ -1214,10 +1242,7 @@ function PropertyForm({ viewMode = false }) {
                         // onChange={onChangeInutp}
                         {...formik.getFieldProps("iframe")}
                         onChange={(e) => {
-                          formik.setFieldValue(
-                            "iframe",
-                            e.target.value
-                          );
+                          formik.setFieldValue("iframe", e.target.value);
                           setmapUrl(e.target.value);
                         }}
                         disabled={viewMode}
@@ -1255,17 +1280,15 @@ function PropertyForm({ viewMode = false }) {
                           name="ownername"
                           {...formik.getFieldProps("ownername")}
                           onChange={(e) => {
-                            formik.setFieldValue(
-                              "ownername",
-                              e.target.value
-                            );
+                            formik.setFieldValue("ownername", e.target.value);
                           }}
                         />
-                        {formik.touched.ownername && formik.errors.ownername && (
-                          <small className="text-danger">
-                            {formik.errors.ownername}
-                          </small>
-                        )}
+                        {formik.touched.ownername &&
+                          formik.errors.ownername && (
+                            <small className="text-danger">
+                              {formik.errors.ownername}
+                            </small>
+                          )}
                       </Form.Group>
 
                       <Form.Group
@@ -1308,10 +1331,7 @@ function PropertyForm({ viewMode = false }) {
                           name="ownerphone"
                           {...formik.getFieldProps("ownerphone")}
                           onChange={(e) => {
-                            formik.setFieldValue(
-                              "ownerphone",
-                              e.target.value
-                            );
+                            formik.setFieldValue("ownerphone", e.target.value);
                           }}
                         />
                         {formik.touched.ownerphone && (
@@ -1337,10 +1357,7 @@ function PropertyForm({ viewMode = false }) {
                           name="rera"
                           {...formik.getFieldProps("rera")}
                           onChange={(e) => {
-                            formik.setFieldValue(
-                              "rera",
-                              e.target.value
-                            );
+                            formik.setFieldValue("rera", e.target.value);
                           }}
                         />
                         {formik.touched.rera && (
@@ -1363,4 +1380,3 @@ function PropertyForm({ viewMode = false }) {
 }
 
 export default PropertyForm;
-

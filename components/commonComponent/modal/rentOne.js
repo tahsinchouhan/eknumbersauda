@@ -1,23 +1,15 @@
-import React, { useState } from "react";
-import paridhi from "../../../public/images/logo.png";
-import home from "../../../public/images/homelogo.png";
-import {
-  Row,
-  Col,
-  Modal,
-  Form,
-  InputGroup,
-} from "react-bootstrap";
-import Image from "next/image";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import { BsArrowLeft } from "react-icons/bs";
-import { BsFillCaretDownFill } from "react-icons/bs";
-import ButtonComponent from "../../button/buttonComponent";
 import axios from "axios";
+import { useFormik } from "formik";
+import Image from "next/image";
+import React, { useState } from "react";
+import { Col, Form, InputGroup, Modal, Row } from "react-bootstrap";
+import { BsArrowLeft } from "react-icons/bs";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import * as yup from "yup";
+import home from "../../../public/images/homelogo.png";
+import paridhi from "../../../public/images/logo.png";
+import ButtonComponent from "../../button/buttonComponent";
 
 export default function Rent({ show, close }) {
   const [rentSteps, setRentSteps] = useState(true);
@@ -41,9 +33,7 @@ export default function Rent({ show, close }) {
       .matches(phoneRegExp, "Phone number is not valid"),
     description: yup.string().required("message is required"),
     type: yup.string().required("property type is required"),
-
   });
-
 
   async function onSubmit(values, onSubmitProps) {
     const payload = {
@@ -63,13 +53,13 @@ export default function Rent({ show, close }) {
     })
       .then((res) => {
         if (res.data) {
-          toast.success("property added successfully",{ theme: "colored",});
+          toast.success("property added successfully", { theme: "colored" });
           onSubmitProps.resetForm();
           close();
         }
       })
       .catch((res) => {
-        toast.error("something went wrong",{ theme: "colored",});
+        toast.error("something went wrong", { theme: "colored" });
       });
   }
   const formik = useFormik({
@@ -128,13 +118,12 @@ export default function Rent({ show, close }) {
               ) : null}
             </Modal.Header>
             <Modal.Body>
-
               <form onSubmit={formik.handleSubmit}>
                 <Row className="px-0 px-sm-3 px-xl-5 justify-content-center">
                   <Col md={12}>
                     <h4 className="px-3 px-xl-4 mb-4 text-center">
                       Rent Your Property With <br />
-                      Paridhi Group
+                      Ek Number Sauda
                     </h4>
                   </Col>
                   <Row>
@@ -158,7 +147,6 @@ export default function Rent({ show, close }) {
                           {formik.errors.username}
                         </div>
                       )}
-
                     </Form.Group>
 
                     <Form.Group
@@ -177,9 +165,7 @@ export default function Rent({ show, close }) {
                         }}
                       />
                       {formik.touched.email && formik.errors.email && (
-                        <div className="text-danger">
-                          {formik.errors.email}
-                        </div>
+                        <div className="text-danger">{formik.errors.email}</div>
                       )}
                     </Form.Group>
 
@@ -204,19 +190,17 @@ export default function Rent({ show, close }) {
                         />
                       </InputGroup>
                       {formik.touched.phone && formik.errors.phone && (
-                        <div className="text-danger">
-                          {formik.errors.phone}
-                        </div>
+                        <div className="text-danger">{formik.errors.phone}</div>
                       )}
                     </Form.Group>
 
-                    <Form.Group   as={Col}
+                    <Form.Group
+                      as={Col}
                       md="12"
                       controlId="validationFormikUsername"
-                      className="mb-4">
-                      <div
-                        className="radio-wrapper mb-0"
-                      >
+                      className="mb-4"
+                    >
+                      <div className="radio-wrapper mb-0">
                         <Form.Check
                           inline
                           label="Sell"
@@ -224,9 +208,7 @@ export default function Rent({ show, close }) {
                           type="radio"
                           value="sell"
                           className="check-property "
-                          checked={
-                            formik.values.type === "sell"
-                          }
+                          checked={formik.values.type === "sell"}
                           {...formik.getFieldProps("type")}
                           onChange={(e) => {
                             formik.setFieldValue("type", "sell");
@@ -245,9 +227,7 @@ export default function Rent({ show, close }) {
                           type="radio"
                           value="rent"
                           className="check-property"
-                          checked={
-                            formik.values.type === "rent"
-                          }
+                          checked={formik.values.type === "rent"}
                           {...formik.getFieldProps("rent")}
                           onChange={(e) => {
                             formik.setFieldValue("type", "rent");
@@ -255,10 +235,8 @@ export default function Rent({ show, close }) {
                         />
                       </div>
                       {formik.touched.type && formik.errors.type && (
-                          <div className="text-danger">
-                            {formik.errors.type}
-                          </div>
-                        )}
+                        <div className="text-danger">{formik.errors.type}</div>
+                      )}
                     </Form.Group>
                     <Form.Group
                       as={Col}
@@ -277,11 +255,12 @@ export default function Rent({ show, close }) {
                           formik.setFieldValue("description", e.target.value);
                         }}
                       />
-                      {formik.touched.description && formik.errors.description && (
-                        <div className="text-danger">
-                          {formik.errors.description}
-                        </div>
-                      )}
+                      {formik.touched.description &&
+                        formik.errors.description && (
+                          <div className="text-danger">
+                            {formik.errors.description}
+                          </div>
+                        )}
                     </Form.Group>
                   </Row>
                 </Row>

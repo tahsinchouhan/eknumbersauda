@@ -1,12 +1,11 @@
 import axios from "axios";
+import moment from "moment";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import SidebarData from "../../../components/admin/adminContents/sidebarData";
-import { FaTrashAlt } from "react-icons/fa";
-import moment from "moment";
-import {useRouter} from "next/router"
 function ContactUs() {
-  const router=useRouter()
+  const router = useRouter();
 
   const [contactData, setContactData] = useState([]);
   useEffect(() => {
@@ -38,11 +37,11 @@ function ContactUs() {
   // };
 
   useEffect(() => {
-    const login= JSON.parse(localStorage.getItem("login"))
-    if(!login){
-      router.push("/pageadmin")
+    const login = JSON.parse(localStorage.getItem("login"));
+    if (!login) {
+      router.push("/pageadmin");
     }
-   }, [])
+  }, []);
   const ServicesData = [
     {
       id: 1,
@@ -110,7 +109,7 @@ function ContactUs() {
             className="text-white m-0 fw-bold andmin-paridhi-text"
             style={{ letterSpacing: "3px" }}
           >
-            PARIDHI
+            Ek Number Sauda
           </h5>
         </div>
         <div className=" ">

@@ -1,28 +1,25 @@
-import React, {useState,useEffect} from "react";
-import AdminDashboard from "../../../../components/admin/adminDashboard";
-import { Button, Col, Row, Tab, Table, Tabs } from "react-bootstrap";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { Tab, Tabs } from "react-bootstrap";
+import SidebarData from "../../../../components/admin/adminContents/sidebarData";
 import BestServiceForm from "./bestServiceForm";
 import HappyCustomerForm from "./happyCustomerForm";
-import TestimonialForm from "./testimonialHome";
-import SidebarData from "../../../../components/admin/adminContents/sidebarData";
 import TestimonialHome from "./testimonialHome";
 import Testimonials from "./testimonials";
-import { toast, ToastContainer } from "react-toastify";
-import {useRouter} from "next/router";
 
 function BestService() {
-const router=useRouter()
-  const [tabSelect, setTabSelect] = useState(1)
+  const router = useRouter();
+  const [tabSelect, setTabSelect] = useState(1);
 
-  const handleSelect=(key)=>{
-    setTabSelect(key)
-  }
+  const handleSelect = (key) => {
+    setTabSelect(key);
+  };
   useEffect(() => {
-    const login= JSON.parse(localStorage.getItem("login"))
-    if(!login){
-      router.push("/pageadmin")
+    const login = JSON.parse(localStorage.getItem("login"));
+    if (!login) {
+      router.push("/pageadmin");
     }
-   }, [])
+  }, []);
   return (
     <>
       <div className="p-4" style={{ backgroundColor: "#0098DA" }}>
@@ -30,7 +27,7 @@ const router=useRouter()
           className="text-white m-0 fw-bold andmin-paridhi-text"
           style={{ letterSpacing: "3px" }}
         >
-          PARIDHI
+          Ek Number Sauda
         </h5>
       </div>
       <div className="d-flex">
@@ -46,28 +43,39 @@ const router=useRouter()
             id="uncontrolled-tab-example"
             className="mb-3 mb-md-5 best_real_tab"
             onSelect={handleSelect}
-         
           >
             <Tab
               defaultactivekey={1}
               eventKey={1}
               title="Best Service"
               className="best_real_nav"
-            > {tabSelect == 1 && <BestServiceForm />}
+            >
+              {" "}
+              {tabSelect == 1 && <BestServiceForm />}
             </Tab>
             <Tab
               eventKey={2}
               title="Happy Customer"
               className="best_real_nav"
-              onClick={()=>setTabSelect(2)}
-            >{tabSelect == 2 && <HappyCustomerForm />}</Tab>
-            <Tab eventKey={3} title="Home" className="best_real_nav"
-              onClick={()=>setTabSelect(3)}
-              >{tabSelect == 3 && <TestimonialHome />}
+              onClick={() => setTabSelect(2)}
+            >
+              {tabSelect == 2 && <HappyCustomerForm />}
             </Tab>
-            <Tab eventKey={4} title="Testimonials" className="best_real_nav"
-              onClick={()=>setTabSelect(4)}
-              >{tabSelect == 4 && <Testimonials />}
+            <Tab
+              eventKey={3}
+              title="Home"
+              className="best_real_nav"
+              onClick={() => setTabSelect(3)}
+            >
+              {tabSelect == 3 && <TestimonialHome />}
+            </Tab>
+            <Tab
+              eventKey={4}
+              title="Testimonials"
+              className="best_real_nav"
+              onClick={() => setTabSelect(4)}
+            >
+              {tabSelect == 4 && <Testimonials />}
             </Tab>
           </Tabs>
         </div>

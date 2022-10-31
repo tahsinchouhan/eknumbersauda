@@ -1,24 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
-import SidebarData from "../../../../components/admin/adminContents/sidebarData";
-import AdminDashboard from "../../../../components/admin/adminDashboard";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import PropertyTable from "../PropertyTable";
-import PropertyData from "../propertyData";
+import React, { useEffect, useState } from "react";
+import { Col, Row } from "react-bootstrap";
+import SidebarData from "../../../../components/admin/adminContents/sidebarData";
 
 function DashboardData() {
-  const router = useRouter()
+  const router = useRouter();
 
-  const [dashboardData, setDashboardData] = useState({})
+  const [dashboardData, setDashboardData] = useState({});
   const [open, setOpen] = useState(false);
   const Data = [
     {
       title: "Total Rent",
       totalNo: dashboardData.totalrent,
       path: "../propertyData",
-      default: '../propertyData'
+      default: "../propertyData",
     },
     {
       title: "Total Sell",
@@ -49,7 +46,6 @@ function DashboardData() {
       title: "Total No. Of Book Property Request ",
       totalNo: dashboardData.totalbookproperty,
       path: `/pageadmin/dashboardProperty/ContactData?tab=BookNow`,
-
     },
     {
       title: "Total No. Of Post Property Request ",
@@ -58,26 +54,26 @@ function DashboardData() {
     },
   ];
   useEffect(() => {
-    getDashboard()
-  }, [])
-
+    getDashboard();
+  }, []);
 
   const getDashboard = () => {
-    axios.get(`/api/actions/dashboard`)
+    axios
+      .get(`/api/actions/dashboard`)
       .then((res) => {
-        setDashboardData(res.data)
+        setDashboardData(res.data);
       })
       .catch((err) => {
-        console.log("Dashboard", err)
-      })
-  }
+        console.log("Dashboard", err);
+      });
+  };
 
   useEffect(() => {
-    const login= JSON.parse(localStorage.getItem("login"))
-    if(!login){
-      router.push("/pageadmin")
+    const login = JSON.parse(localStorage.getItem("login"));
+    if (!login) {
+      router.push("/pageadmin");
     }
-   }, [])
+  }, []);
   return (
     <div>
       <div className="">
@@ -86,7 +82,7 @@ function DashboardData() {
             className="text-white m-0 fw-bold andmin-paridhi-text"
             style={{ letterSpacing: "3px" }}
           >
-            PARIDHI
+            Ek Number Sauda
           </h5>
         </div>
         <div className="d-flex">
@@ -97,36 +93,34 @@ function DashboardData() {
             <h4 className="text-center fw-bold">Dashboard</h4>
             <hr />
             <Row>
-
-            {Data.map((item, index) =>{
-              return(
-                <>
-                <Col sm={6} md={4} xl={3} className="my-5" >
-                <Link
-                  href={item.path || item.default}
-                  key={index}
-                  className="admin_link"
-                  activeclassName="admin_active"
-                >
-                  <div
-                    className={`${router.pathname === item.path ? "activeNav " : ""
-                      }  card dashboardData-card shadow p-5  px-3  py-4   w-75 m-auto`}
-                    style={{ height: "225px", cursor: "pointer" }}
-
-                  >
-                     <h2 className="text-center  fw-bold my-lg-4">
-                          {item.totalNo}
-                        </h2>
-                        <p className="mt-2 text-center fw-bold my-0 mt-lg-2 mb-4">
-                          {item.title}
-                        </p>
-                  </div>
-                </Link>
-                </Col>
-                </>
-              )
-            }          
-            )}
+              {Data.map((item, index) => {
+                return (
+                  <>
+                    <Col sm={6} md={4} xl={3} className="my-5">
+                      <Link
+                        href={item.path || item.default}
+                        key={index}
+                        className="admin_link"
+                        activeclassName="admin_active"
+                      >
+                        <div
+                          className={`${
+                            router.pathname === item.path ? "activeNav " : ""
+                          }  card dashboardData-card shadow p-5  px-3  py-4   w-75 m-auto`}
+                          style={{ height: "225px", cursor: "pointer" }}
+                        >
+                          <h2 className="text-center  fw-bold my-lg-4">
+                            {item.totalNo}
+                          </h2>
+                          <p className="mt-2 text-center fw-bold my-0 mt-lg-2 mb-4">
+                            {item.title}
+                          </p>
+                        </div>
+                      </Link>
+                    </Col>
+                  </>
+                );
+              })}
             </Row>
           </div>
         </div>

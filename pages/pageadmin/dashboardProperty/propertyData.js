@@ -1,51 +1,32 @@
-import React, { useState, useEffect } from "react";
-import {
-  Card,
-  Container,
-  Row,
-  Col,
-  Form,
-  Button,
-  Table,
-  InputGroup,
-  FormControl,
-} from "react-bootstrap";
-import AdminDashboard from "../../../components/admin/adminDashboard";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { Button, Col, FormControl, InputGroup } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 // import PropertyTable from './PropertyTable';
 import axios from "axios";
 // import PropertyData from './propertyData';
-import { MOCK_PROPERTY_TABLE_DATA } from "../../../utils/constants";
-import { FaPen, FaTrashAlt } from "react-icons/fa";
-import SidebarData from "../../../components/admin/adminContents/sidebarData";
-import { MenuItemLink } from "react-admin";
-import PropertyTable from "./PropertyTable";
-import DeleteModal from "../../../components/commonComponent/deleteModal";
-import { toast, ToastContainer } from "react-toastify";
 import { BsFillEyeFill } from "react-icons/bs";
-
-
+import { FaPen, FaTrashAlt } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
+import SidebarData from "../../../components/admin/adminContents/sidebarData";
+import DeleteModal from "../../../components/commonComponent/deleteModal";
 
 function PropertyData() {
-
   const router = useRouter();
 
   const [AddView, setAddView] = useState(0);
   const [getPropertyData, setGetPropertyData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [filterProperty, setFilterProperty] = useState([]);
-  const [deletId, setDeletId] = useState("")
+  const [deletId, setDeletId] = useState("");
 
   const [modalDeleteShow, setModalDeleteShow] = useState(false);
   const handleDeleteClose = () => setModalDeleteShow(false);
 
   const handleDeleteShow = (row) => {
-    setDeletId(row._id)
+    setDeletId(row._id);
     setModalDeleteShow(true);
-
-  }
+  };
 
   const addPropertHandler = () => {
     setAddView();
@@ -57,7 +38,7 @@ function PropertyData() {
   };
   const deleteHandler = (row) => {
     deletePropertyCall(deletId);
-    handleDeleteClose()
+    handleDeleteClose();
   };
 
   useEffect(() => {
@@ -107,22 +88,21 @@ function PropertyData() {
       },
     })
       .then((res) => {
-        toast.success("property delete successfully",{ theme: "colored",});
-        getPropertyCall()
+        toast.success("property delete successfully", { theme: "colored" });
+        getPropertyCall();
       })
       .catch((res) => {
-        toast.error("something went wrong",{ theme: "colored",});
+        toast.error("something went wrong", { theme: "colored" });
         return res || [];
-
       });
   };
 
   useEffect(() => {
-    const login= JSON.parse(localStorage.getItem("login"))
-    if(!login){
-      router.push("/pageadmin")
+    const login = JSON.parse(localStorage.getItem("login"));
+    if (!login) {
+      router.push("/pageadmin");
     }
-   }, [])
+  }, []);
 
   const columns = [
     {
@@ -133,7 +113,7 @@ function PropertyData() {
     {
       name: "Property Type",
       selector: (row) => row.type,
-      sortable: true, 
+      sortable: true,
     },
     {
       name: "Owner Name",
@@ -158,23 +138,34 @@ function PropertyData() {
       name: "Action",
       cell: (row) => (
         <>
-          <BsFillEyeFill style={{ cursor: "pointer" }} className="mx-2" onClick={() => router.push(`dashboardData/view/${row._id}`)} />
+          <BsFillEyeFill
+            style={{ cursor: "pointer" }}
+            className="mx-2"
+            onClick={() => router.push(`dashboardData/view/${row._id}`)}
+          />
 
-          <FaPen style={{ cursor: "pointer" }} className="mx-2" onClick={() => editHandler(row)} />
+          <FaPen
+            style={{ cursor: "pointer" }}
+            className="mx-2"
+            onClick={() => editHandler(row)}
+          />
 
-          <FaTrashAlt style={{ cursor: "pointer" }} className="mx-2" onClick={() => handleDeleteShow(row)} />
+          <FaTrashAlt
+            style={{ cursor: "pointer" }}
+            className="mx-2"
+            onClick={() => handleDeleteShow(row)}
+          />
         </>
       ),
     },
-
   ];
 
   useEffect(() => {
     const results = !searchInput
       ? getPropertyData
       : getPropertyData.filter((item) =>
-        item.title.toLowerCase().includes(searchInput)
-      );
+          item.title.toLowerCase().includes(searchInput)
+        );
     setFilterProperty(results);
   }, [getPropertyData, searchInput]);
 
@@ -185,7 +176,7 @@ function PropertyData() {
           className="text-white m-0 fw-bold andmin-paridhi-text"
           style={{ letterSpacing: "3px" }}
         >
-          PARIDHI
+          Ek Number Sauda
         </h5>
       </div>
       <div className="d-flex">
@@ -215,7 +206,6 @@ function PropertyData() {
               </InputGroup>
             </Col>
 
-
             <DataTable columns={columns} data={filterProperty} pagination />
           </div>
         </div>
@@ -223,10 +213,10 @@ function PropertyData() {
       <DeleteModal
         showModal={modalDeleteShow}
         hideModal={handleDeleteClose}
-        deleteHandler={deleteHandler} />
+        deleteHandler={deleteHandler}
+      />
 
       <ToastContainer />
-
     </>
   );
 }

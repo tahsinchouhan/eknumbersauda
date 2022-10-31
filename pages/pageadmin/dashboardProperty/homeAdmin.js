@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Card, Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
+import React from "react";
+import { Card, Col, Form, Row } from "react-bootstrap";
 import * as yup from "yup";
 import AdminDashboard from "../../../components/admin/adminDashboard";
 import ButtonComponent from "../../../components/button/buttonComponent";
@@ -31,7 +31,7 @@ function HomeAdmin() {
             className="text-white m-0 fw-bold andmin-paridhi-text"
             style={{ letterSpacing: "3px" }}
           >
-            PARIDHI
+            Ek Number Sauda
           </h5>
         </div>
         <div className="d-flex">

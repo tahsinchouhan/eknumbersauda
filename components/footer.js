@@ -108,7 +108,7 @@ export default function Footer() {
         {/* --------------------------------Copyright-section----------------------------- */}
 
         <div className="copyright-section text-center py-3 mt-5">
-          Copyright &copy;Paridhi group Inc. 2022. All right reserved
+          Copyright &copy;Ek Number Sauda group Inc. 2022. All right reserved
         </div>
       </div>
       {modalOpen && <Rent show={handleOpen} close={handleClose} />}
