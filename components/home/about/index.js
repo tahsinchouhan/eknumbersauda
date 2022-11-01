@@ -1,8 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { TbHome2 } from "react-icons/tb";
-import Image from "next/image";
-import Owner from '../../../public/images/owner.jpeg'
+import { Col, Container, Row } from "react-bootstrap";
 
 function About() {
   const aboutText = [
@@ -78,7 +75,7 @@ function About() {
                 );
               })} */}
               <Col>
-                <Image
+                {/* <Image
                   src={Owner}
                   width={641}
                   height={427}
@@ -86,12 +83,18 @@ function About() {
                   alt="profileImg"
                   // className="rounded-circle"
                   style={{ borderRadius: '10px' }}
-                />
+                /> */}
               </Col>
               <Col className="main-owner p-5">
                 <div className="main-owner-details">
-                  <h3 className="owner-about">Roshan {'&'} Alok</h3>
-                  <p className="owner-about-p">Property Providers for our home was a financially rewarding and stress-free experience. The team at Property Providers organised everything with ease and efficiency. Their attention to detail was outstanding and their ‘nothing is a problem’ attitude exemplary.</p>
+                  <h3 className="owner-about">Roshan {"&"} Alok</h3>
+                  <p className="owner-about-p">
+                    Property Providers for our home was a financially rewarding
+                    and stress-free experience. The team at Property Providers
+                    organised everything with ease and efficiency. Their
+                    attention to detail was outstanding and their ‘nothing is a
+                    problem’ attitude exemplary.
+                  </p>
                 </div>
               </Col>
             </Row>
