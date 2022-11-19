@@ -32,6 +32,7 @@ const options = [
 function PropertyForm({ viewMode = false }) {
   const router = useRouter();
   const id = router.query.propertyTableId;
+  console.log(id);
 
   const [change, setChange] = useState(false);
   const [btnShow, setBtnShow] = useState(false);
@@ -88,7 +89,7 @@ function PropertyForm({ viewMode = false }) {
     images: yup.array().required("Image is required"),
     amenities: yup.array().required("Amenities is required"),
     // amenities: yup.array().required('Atleast One Amenities is required'),
-    property: yup.string().required("Property Type is required"),
+    // property: yup.string().required("Property Type is required"),
 
     whychoose1: yup.string().required("This is required"),
     whychoose2: yup.string().required("This is required"),
