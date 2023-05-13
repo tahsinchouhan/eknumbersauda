@@ -87,7 +87,7 @@ function About() {
               </Col>
               <Col className="main-owner p-5">
                 <div className="main-owner-details">
-                  <h3 className="owner-about">Roshan {"&"} Alok</h3>
+                  {/* <h3 className="owner-about">Roshan {"&"} Alok</h3> */}
                   <p className="owner-about-p">
                     Property Providers for our home was a financially rewarding
                     and stress-free experience. The team at Property Providers
