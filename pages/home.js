@@ -2,8 +2,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { BsWhatsapp } from "react-icons/bs";
-import OurProject from "../components/commonComponent/latestProperty/ourProject";
 import RecentlyAdded from "../components/commonComponent/latestProperty/RecentlyAdded";
+import OurProject from "../components/commonComponent/latestProperty/ourProject";
 import BestRealEstaleDeal from "../components/commonComponent/real-estate/bestRealEstale";
 import BestServices from "../components/commonComponent/sevices";
 import About from "../components/home/about";
@@ -21,7 +21,7 @@ function Home() {
   useEffect(() => {
     if (whatsRedirect) {
       window.location.href =
-        "https://api.whatsapp.com/send?phone=+917000028760&text=Hi";
+        "https://api.whatsapp.com/send?phone=+919303000500&text=Hi";
     }
   }, [whatsRedirect]);
 
@@ -29,7 +29,7 @@ function Home() {
     <>
       <div className="whatsapp_btn ">
         <Link
-          href="https://api.whatsapp.com/send?phone=+917000028760&text=Hi"
+          href="https://api.whatsapp.com/send?phone=+919303000500&text=Hi"
           clickOnButton={() => setWhatsRedirect(true)}
         >
           <BsWhatsapp className="mt-2" />

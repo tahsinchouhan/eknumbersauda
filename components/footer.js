@@ -21,7 +21,7 @@ export default function Footer() {
               <div>
                 <Image
                   src={logo}
-                  alt="Paridhi-Group Logo"
+                  alt=""
                   width={160}
                   height={60}
                 />
@@ -78,7 +78,7 @@ export default function Footer() {
                 Infront of KPS Junior School, St. Xavier's School Road, Avanti
                 Vihar Raipur C.G.
               </p>
-              <p className="mb-2">Çontact: +91-7000028760</p>
+              <p className="mb-2">Çontact: +91-9303000500</p>
               <div className="d-flex justify-content-lg-start justify-content-center my-4">
                 <div className="icon-div rounded-circle me-2">
                   <Link href="https://www.facebook.com/facebook">
